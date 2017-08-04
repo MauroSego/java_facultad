@@ -69,26 +69,44 @@ class segundoParcial{
 	}
     }
     
-    void imprimirOrdenados(){
-	for(int i = 0; i < tiempos.length; i++){
-	    c.println(nombres[i]);
-	    
-	    c.println(tiempos[i]);
+    void ordenarPorNombre(){
+	int n = nombres.length;
+	String nombreAuxiliar;
+	float tiempoAuxiliar;
+	for (int k = 1; k < n; k++){
+	    for (int i = 0; i < n - k; i++){
+		if(nombres[i].compareTo(nombres[i+1])>0){
+		    nombreAuxiliar = nombres[i];
+		    nombres[i] = nombres[i+1];
+		    nombres[i+1] = nombreAuxiliar;
+		    
+		    tiempoAuxiliar = tiempos[i];
+		    tiempos[i] = tiempos[i+1];
+		    tiempos[i+1] = tiempoAuxiliar;
+		}
+	    }
+	}
+	c.clear();
+	int fila = 5;
+	for(int i = 0; i < nombres.length; i++){
+	    c.setCursor(fila, 10);
+	    c.print(nombres[i]);
+	    c.setCursor(fila, 30);
+	    c.print(tiempos[i]);
+	    fila++;
 	}
     }
     
     void imprimirPrimeroYUltimo(){
-	for(int i = 0; i < tiempos.length; i++){
-	    c.println(nombres[0]);
-	    
-	    c.println(tiempos[0]);
-	}
+	    c.println("El ganador de la competencia fue: " + nombres[0]);
+	    c.println();
+	    c.println("El ultimo de la competencia fue: " + nombres[nombres.length-1]);
     }
     
     public static void main (String arg[]){
 	c = new Console();
 	segundoParcial e = new segundoParcial();
-	int op;
+	/*int op;
 	do{
 	c.clear();
 	c.setCursor(4, 12);
@@ -110,14 +128,15 @@ class segundoParcial{
     }
 	while(op != 2);
 	System.exit(0);
+	    */
 	
 	
-	
-/*        e.cargarDatos();
-	//e.consulta();
+	e.cargarDatos();
+	e.ordenarPorNombre();
+/*        e.consulta();
 	e.ordenarPorTiempos();
 	e.imprimirOrdenados();
-	e.imprimirPrimeroYUltimo();
-	//System.exit(0);*/
+	e.imprimirPrimeroYUltimo();*/
+	//System.exit(0);
     }
 }
