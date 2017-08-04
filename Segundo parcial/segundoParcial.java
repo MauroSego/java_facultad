@@ -8,7 +8,7 @@ class segundoParcial{
 	nombres = new String[3];
 	tiempos = new float[3];
     }
-    
+    // CARGA DE DATOS
     void cargarDatos(){
 	c.println("Cargue los datos de las personas: ");
 	c.println();
@@ -20,7 +20,7 @@ class segundoParcial{
 	    c.println();
 	}
     }
-    
+    // CONSULTA DE TIEMPO DE CORREDORES
     void consulta(){
 	int posicion;
 	String nombreBuscado;
@@ -49,7 +49,7 @@ class segundoParcial{
 	}
 	while(op == 'S' || op == 's');
     } 
-    
+    // ORDEN POR TIEMPO
     void ordenarPorTiempos(){
 	int n = tiempos.length;
 	String auxiliarNombre;
@@ -68,7 +68,7 @@ class segundoParcial{
 	    }
 	}
     }
-    
+    // ORDEN POR NOMBRE
     void ordenarPorNombre(){
 	int n = nombres.length;
 	String nombreAuxiliar;
@@ -96,13 +96,14 @@ class segundoParcial{
 	    fila++;
 	}
     }
-    
+    // IMPRESION DE PRIMERO Y ULTIMO
     void imprimirPrimeroYUltimo(){
 	    c.println("El ganador de la competencia fue: " + nombres[0]);
 	    c.println();
 	    c.println("El ultimo de la competencia fue: " + nombres[nombres.length-1]);
     }
     
+    //EJECUCION PRINCIPAL
     public static void main (String arg[]){
 	c = new Console();
 	segundoParcial e = new segundoParcial();
