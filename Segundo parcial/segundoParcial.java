@@ -88,11 +88,36 @@ class segundoParcial{
     public static void main (String arg[]){
 	c = new Console();
 	segundoParcial e = new segundoParcial();
-	e.cargarDatos();
+	int op;
+	do{
+	c.clear();
+	c.setCursor(4, 12);
+	c.print("Menu de opciones");
+	c.setCursor(5, 12);
+	c.print("----------------");
+	c.setCursor(6, 12);
+	c.print("1 - Cargar Datos");
+	c.setCursor(7, 12);
+	c.print("2 - Consultar por tiempos de competidores");
+	c.setCursor(8, 12);
+	
+	c.print("Digite una opcion: ");
+	op = c.readInt();
+	switch(op){
+	    case 1: e.cargarDatos(); break;
+	    case 2: e.consulta(); break;       
+	}
+    }
+	while(op != 2);
+	System.exit(0);
+	
+	
+	
+/*        e.cargarDatos();
 	//e.consulta();
 	e.ordenarPorTiempos();
 	e.imprimirOrdenados();
 	e.imprimirPrimeroYUltimo();
-	//System.exit(0);
+	//System.exit(0);*/
     }
 }
