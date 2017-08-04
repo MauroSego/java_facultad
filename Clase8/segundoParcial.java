@@ -50,13 +50,49 @@ class segundoParcial{
 	while(op == 'S' || op == 's');
     } 
     
-    void
+    void ordenarPorTiempos(){
+	int n = tiempos.length;
+	String auxiliarNombre;
+	float auxiliarTiempo;
+	for (int j = 1; j < n; j++){
+	    for(int i = 0; i < n - j; i++){
+		if(tiempos[i]>tiempos[i+1]){
+		auxiliarNombre = nombres[i];
+		nombres[i] = nombres[i+1];
+		nombres[i+1] = auxiliarNombre;
+		
+		auxiliarTiempo = tiempos[i];
+		tiempos[i] = tiempos[i+1];
+		tiempos[i+1] = auxiliarTiempo;
+		}
+	    }
+	}
+    }
+    
+    void imprimirOrdenados(){
+	for(int i = 0; i < tiempos.length; i++){
+	    c.println(nombres[i]);
+	    
+	    c.println(tiempos[i]);
+	}
+    }
+    
+    void imprimirPrimeroYUltimo(){
+	for(int i = 0; i < tiempos.length; i++){
+	    c.println(nombres[0]);
+	    
+	    c.println(tiempos[0]);
+	}
+    }
     
     public static void main (String arg[]){
 	c = new Console();
 	segundoParcial e = new segundoParcial();
 	e.cargarDatos();
-	e.consulta();
-	System.exit(0);
+	//e.consulta();
+	e.ordenarPorTiempos();
+	e.imprimirOrdenados();
+	e.imprimirPrimeroYUltimo();
+	//System.exit(0);
     }
 }
