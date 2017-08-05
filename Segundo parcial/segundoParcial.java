@@ -7,9 +7,10 @@ class segundoParcial
 
     segundoParcial ()
     {
-	nombres = new String [3];
-	tiempos = new float [3];
+	nombres = new String [20];
+	tiempos = new float [20];
     }
+
 
     // CARGA DE DATOS
     void cargarDatos ()
@@ -24,7 +25,7 @@ class segundoParcial
 	    tiempos [i] = c.readFloat ();
 	    c.println ();
 	}
-	c.clear();
+	c.clear ();
     }
 
 
@@ -36,7 +37,7 @@ class segundoParcial
 	char op;
 	do
 	{
-	    c.clear();
+	    c.clear ();
 	    c.println ("Consulta de tiempo por corredor");
 	    c.println ("-------------------------------");
 	    posicion = -1;
@@ -64,7 +65,7 @@ class segundoParcial
 	    op = c.readChar ();
 	}
 	while (op == 'S' || op == 's');
-	c.clear();
+	c.clear ();
     }
 
 
@@ -99,24 +100,31 @@ class segundoParcial
 	int n = nombres.length;
 	String nombreAuxiliar;
 	float tiempoAuxiliar;
-	for (int k = 1; k < n; k++){
-	    for (int i = 0; i < n - k; i++){
-		if(nombres[i].compareTo(nombres[i+1])>0){
-		    nombreAuxiliar = nombres[i];
-		    nombres[i] = nombres[i+1];
-		    nombres[i+1] = nombreAuxiliar;
+	for (int k = 1 ; k < n ; k++)
+	{
+	    for (int i = 0 ; i < n - k ; i++)
+	    {
+		if (nombres [i].compareTo (nombres [i + 1]) > 0)
+		{
+		    nombreAuxiliar = nombres [i];
+		    nombres [i] = nombres [i + 1];
+		    nombres [i + 1] = nombreAuxiliar;
 
-		    tiempoAuxiliar = tiempos[i];
-		    tiempos[i] = tiempos[i+1];
-		    tiempos[i+1] = tiempoAuxiliar;
+		    tiempoAuxiliar = tiempos [i];
+		    tiempos [i] = tiempos [i + 1];
+		    tiempos [i + 1] = tiempoAuxiliar;
 		}
 	    }
-	} 
+	}
     }
 
 
     void imprimir ()
     {
+	c.setCursor(3, 10);
+	c.println("Competidores ordenados alfabeticamente");
+	c.setCursor(4, 10);
+	c.println("--------------------------------------");
 	int fila = 5;
 	for (int i = 0 ; i < nombres.length ; i++)
 	{
@@ -126,17 +134,27 @@ class segundoParcial
 	    c.print (tiempos [i]);
 	    fila++;
 	}
+	c.println ();
+	c.println ();
+	c.print ("Presione Enter para volver al menu");
+	c.readChar ();
+	c.clear ();
     }
 
 
     // IMPRESION DE PRIMERO Y ULTIMO
     void imprimirPrimeroYUltimo ()
     {
-	c.println ("El ganador de la competencia fue: " + nombres [0]);
-	c.println ();
-	c.println ("El ultimo de la competencia fue: " + nombres [nombres.length - 1]);
-	
+	c.setCursor (3, 7);
+	c.println ("El ganador de la competencia fue: " + nombres [0] + " con un tiempo de: " + tiempos [0]);
+	c.setCursor (4, 7);
+	c.println ("El ultimo de la competencia fue: " + nombres [nombres.length - 1] + " con un tiempo de: " + tiempos [tiempos.length - 1]);
+	c.setCursor (6, 7);
+	c.print ("Presione Enter para volver al menu");
+	c.readChar ();
+	c.clear ();
     }
+
 
     //EJECUCION PRINCIPAL
     public static void main (String arg[])
@@ -146,41 +164,45 @@ class segundoParcial
 	int op;
 	do
 	{
-	    c.setCursor (4, 12);
+	    c.setCursor (4, 9);
 	    c.print ("Menu de opciones");
-	    c.setCursor (5, 12);
+	    c.setCursor (5, 9);
 	    c.print ("----------------");
-	    c.setCursor (6, 12);
+	    c.setCursor (6, 9);
 	    c.print ("1 - Cargar Datos");
-	    c.setCursor (7, 12);
+	    c.setCursor (7, 9);
 	    c.print ("2 - Consultar por tiempos de competidores");
-	    c.setCursor (8, 12);
+	    c.setCursor (8, 9);
 	    c.print ("3 - Chequear quien gano y quien salio ultimo");
-	    c.setCursor (9, 12);
+	    c.setCursor (9, 9);
 	    c.print ("4 - Imprimir resultados ordenados por nombre");
-	    c.println ();
+	    c.setCursor (10, 9);
+	    c.print ("5 - Salir del sistema");
+
+	    c.setCursor (12, 9);
 	    c.print ("Digite una opcion: ");
 	    op = c.readInt ();
 	    switch (op)
 	    {
 		case 1:
-		    c.clear();
+		    c.clear ();
 		    e.cargarDatos ();
 		    break;
 		case 2:
-		    c.clear();
+		    c.clear ();
 		    e.consulta ();
-		    
+
 		    break;
 		case 3:
-		    c.clear();
+		    c.clear ();
 		    e.ordenarPorTiempos ();
-		    e.imprimirPrimeroYUltimo();
+		    e.imprimirPrimeroYUltimo ();
 		    break;
-		case 4: 
-		    c.clear();
-		    e.ordenarPorNombre();
-		    e.imprimir(); break;
+		case 4:
+		    c.clear ();
+		    e.ordenarPorNombre ();
+		    e.imprimir ();
+		    break;
 
 	    }
 	}
